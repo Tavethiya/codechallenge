@@ -34,7 +34,7 @@ const routes: Routes = [
     component: HourComponent,
   },
   {
-    path: 'view/hours/:id',
+    path: 'view/hour/:id',
     component: HourViewComponent,
   },
   {
