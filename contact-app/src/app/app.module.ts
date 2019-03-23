@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { ContactComponent } from './contact/contact.component';
-import { ContactViewComponent } from './contact-view/contact-view.component';
+import { ContactsComponent } from './contact/contacts/contacts.component';
+import { ContactComponent } from './contact/contact/contact.component';
+import { ContactViewComponent } from './contact/contact-view/contact-view.component';
+import { HoursComponent } from '../app/hours/hours/hours.component';
+import { HourComponent } from '../app/hours/hour/hour.component';
+import { HourViewComponent } from '../app/hours/hours-view/hours-view.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +20,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     AppComponent,
     ContactsComponent,
     ContactComponent,
-    ContactViewComponent
+    ContactViewComponent,
+    HourComponent,
+    HoursComponent,
+    HourViewComponent
   ],
   imports: [
     BrowserModule,

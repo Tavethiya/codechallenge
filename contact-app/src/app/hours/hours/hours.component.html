@@ -1,0 +1,43 @@
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+</div>
+<div class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <button class="btn btn-primary" routerLink="/hour">Add a Hour</button>
+        <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="40"
+          [footerHeight]="40" [limit]="10" [rowHeight]="'auto'">
+          <ngx-datatable-column prop="comments" [width]="120">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              Comments
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{value}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="hours" [width]="120">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              No Of Hours
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{value}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="id" [width]="200">
+            <ng-template let-column="column" ngx-datatable-header-template>
+
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <button class="btn btn-primary btn-sm" [routerLink]="'/view/hour/' + value">View</button>&nbsp;
+              <button class="btn btn-danger btn-sm" (click)="OnDelete(value)">Delete</button>
+            </ng-template>
+
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
-const setNow = require('feathers-hooks-common');
-const validateContact = require('../../hooks/validate-contact')
+const { setNow } = require('feathers-hooks-common');
+const validateContact = require('../../hooks/validate-contact');
 
 module.exports = {
   before: {

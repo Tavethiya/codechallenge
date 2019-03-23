@@ -1,0 +1,25 @@
+<div style="text-align:center">
+  <h1>
+    {{hour.name}}
+  </h1>
+</div>
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+
+        <button type="button" routerLink="/hours" class="btn btn-primary">Back to Hours</button>
+
+        <div class="container">
+          <hr>
+          <label class="h5">Comments : </label> &nbsp;<label>{{hour.comments}}</label>
+          <hr>
+          <label class="h5">Hours : </label> &nbsp;<label>{{hour.hours}}</label>
+          <hr>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

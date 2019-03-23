@@ -14,26 +14,26 @@ export class ContactService {
   }
 
   // Get All Contact
-  getContacts(): any {
+  public getAllData(): any {
     return this.http.get(environment.apiBaseUrl + '/contacts');
   }
 
-  getContact(id): any {
+  public getSingleData(id): any {
     return this.http.get(environment.apiBaseUrl + '/contacts/' + id);
   }
 
   // Insert New Contact
-  postContact(contact: Contact) {
+  public addData(contact: Contact) {
     return this.http.post(environment.apiBaseUrl + '/contacts', contact);
   }
 
   // Delete Single Contact
-  deleteContact(id) {
+  public deleteData(id) {
     return this.http.delete(environment.apiBaseUrl + '/contacts/' + id);
   }
 
   // Update a Contact
-  putContact(contact: Contact) {
+  public putData(contact: Contact) {
     return this.http.put(environment.apiBaseUrl + '/contacts/' + contact.id, contact);
   }
 

@@ -1,0 +1,36 @@
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+</div>
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="hourForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Comments</label>
+            <input type="text" formControlName="comments" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.comments.errors }" />
+            <div *ngIf="submitted && f.comments.errors" class="invalid-feedback">
+              <div *ngIf="f.comments.errors.required">Comments is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Hours</label>
+            <input type="number" formControlName="hours" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.hours.errors }" />
+            <div *ngIf="submitted && f.hours.errors" class="invalid-feedback">
+              <div *ngIf="f.hours.errors.required">Hours is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">save</button>&nbsp;<button type="button"
+              routerLink="/hours" class="btn btn-primary">Go to List</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
