@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
- export class ContactService {
+export class ContactService {
   constructor(private http: HttpClient, private router: Router) {
 
   }

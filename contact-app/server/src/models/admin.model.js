@@ -6,7 +6,7 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const admin = sequelizeClient.define('admin', {
-  
+
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,9 +15,7 @@ module.exports = function (app) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-  
-  
+    }
   }, {
     hooks: {
       beforeCount(options) {

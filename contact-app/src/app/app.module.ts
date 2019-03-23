@@ -18,7 +18,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ContactsComponent,
     ContactComponent,
     ContactViewComponent
-   ],
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

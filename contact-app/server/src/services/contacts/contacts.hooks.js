@@ -1,6 +1,4 @@
-
-
-const { setNow } = require('feathers-hooks-common');
+const setNow = require('feathers-hooks-common');
 const validateContact = require('../../hooks/validate-contact')
 
 module.exports = {
@@ -8,9 +6,9 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [setNow('updatedAt'),validateContact()],
-    update: [setNow('updatedAt'),validateContact()],
-    patch: [setNow('updatedAt'),validateContact()],
+    create: [setNow('updatedAt'), validateContact()],
+    update: [setNow('updatedAt'), validateContact()],
+    patch: [setNow('updatedAt'), validateContact()],
     remove: []
   },
 

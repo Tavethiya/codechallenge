@@ -17,22 +17,22 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    dob:{
-      type:DataTypes.DATE,
+    dob: {
+      type: DataTypes.DATE,
       allowNull: false
     },
-    email:{
+    email: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    gender:{
+    gender: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    amount:{
+    amount: {
       type: DataTypes.DECIMAL(10, 2),
-      allowNull: false      
-    } 
+      allowNull: false
+    }
   }, {
     hooks: {
       beforeCount(options) {
