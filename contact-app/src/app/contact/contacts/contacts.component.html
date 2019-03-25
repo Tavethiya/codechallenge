@@ -9,7 +9,7 @@
       <div class="col-md-8 offset-md-2">
         <button class="btn btn-primary" routerLink="/contact">Add a Contact</button>
         <ngx-datatable class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="40"
-          [footerHeight]="40" [limit]="10" [rowHeight]="'auto'" [reorderable]="reorderable">
+          [footerHeight]="40" [limit]="10" [rowHeight]="'auto'" >
           <ngx-datatable-column prop="name" [width]="120">
             <ng-template let-column="column" ngx-datatable-header-template>
               Name

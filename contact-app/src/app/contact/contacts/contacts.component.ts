@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../shared/services/contact.service';
-import { Common } from '../../shared/services/common.service';
+import { Contact } from 'src/app/shared/models/contact.model';
+// import { Common } from '../../shared/services/common.service';
 
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.css']
 })
-export class ContactsComponent extends Common implements OnInit {
+export class ContactsComponent implements OnInit {
   title = 'Contacts';
   rows = [];
   columns = [
@@ -19,18 +20,17 @@ export class ContactsComponent extends Common implements OnInit {
   ];
 
   public constructor(private contactService: ContactService) {
-    super(contactService);
     this.GetContacts(); // Calling Common class method diractly
   }
 
   OnDelete(id) {
-    this.delete(id).subscribe(res => {
+    this.contactService.delete(id).subscribe(res => {
       this.GetContacts();
     });
   }
 
   GetContacts() {
-    this.getAll().subscribe((data: any) => {
+    this.contactService.get().subscribe((data: any) => {
       this.rows = data.data;
     });
   }

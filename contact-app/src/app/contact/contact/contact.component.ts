@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Common } from '../../shared/services/common.service';
 import { ContactService } from '../../shared/services/contact.service';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent extends Common implements OnInit {
+export class ContactComponent implements OnInit {
   contactForm: FormGroup;
   submitted = false;
   title = 'Contacts';
   constructor(private formBuilder: FormBuilder, private contactService: ContactService, private router: Router) {
-    super(contactService);
   }
 
   ngOnInit() {
@@ -36,7 +35,7 @@ export class ContactComponent extends Common implements OnInit {
     if (this.contactForm.invalid) {
       return;
     }
-    this.add(this.contactForm.value).subscribe(res => {
+    this.contactService.add(this.contactForm.value).subscribe(res => {
       if (res) {
         alert('Contact Saved');
       } else {

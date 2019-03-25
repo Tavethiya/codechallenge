@@ -78,7 +78,7 @@ var routes = [
         component: _app_hours_hour_hour_component__WEBPACK_IMPORTED_MODULE_7__["HourComponent"],
     },
     {
-        path: 'view/hours/:id',
+        path: 'view/hour/:id',
         component: _app_hours_hours_view_hours_view_component__WEBPACK_IMPORTED_MODULE_8__["HourViewComponent"],
     },
     {
@@ -120,7 +120,7 @@ module.exports = "\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n\n<nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <div class=\"navbar-header\">\n        <a class=\"navbar-brand\" href=\"#\">Code Chanllenge</a>\n      </div>\n      <ul class=\"nav navbar-nav\">\n        <li class=\"active\"><a routerLink=\"/contacts\">Contact</a></li>\n        <li class=\"\"><a routerLink=\"/hours\">Register Hours</a></li>\n    </ul>\n    </div>\n  </nav>\n  \n  \n<router-outlet></router-outlet>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n\n<nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <div class=\"navbar-header\">\n        <a class=\"navbar-brand\" href=\"#\">Code Challenge</a>\n      </div>\n      <ul class=\"nav navbar-nav\">\n        <li class=\"active\"><a routerLink=\"/contacts\">Contact</a></li>\n        <li class=\"\"><a routerLink=\"/hours\">Register Hours</a></li>\n    </ul>\n    </div>\n  </nav>\n  \n  \n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -275,26 +275,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _shared_models_contact_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../shared/models/contact.model */ "./src/app/shared/models/contact.model.ts");
 /* harmony import */ var _shared_services_contact_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../shared/services/contact.service */ "./src/app/shared/services/contact.service.ts");
-/* harmony import */ var _shared_services_common_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../shared/services/common.service */ "./src/app/shared/services/common.service.ts");
 
 
 
 
 
-
-var ContactViewComponent = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](ContactViewComponent, _super);
+var ContactViewComponent = /** @class */ (function () {
     function ContactViewComponent(activatedRoute, contactService) {
-        var _this = _super.call(this, contactService) || this;
-        _this.activatedRoute = activatedRoute;
-        _this.contactService = contactService;
-        _this.contact = new _shared_models_contact_model__WEBPACK_IMPORTED_MODULE_3__["Contact"]();
-        return _this;
+        this.activatedRoute = activatedRoute;
+        this.contactService = contactService;
+        this.contact = new _shared_models_contact_model__WEBPACK_IMPORTED_MODULE_3__["Contact"]();
     }
     ContactViewComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
-            _this.getSingle(params.id).subscribe(function (res) {
+            _this.contactService.getById(params.id).subscribe(function (res) {
                 _this.contact = res;
             });
         });
@@ -308,7 +303,7 @@ var ContactViewComponent = /** @class */ (function (_super) {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _shared_services_contact_service__WEBPACK_IMPORTED_MODULE_4__["ContactService"]])
     ], ContactViewComponent);
     return ContactViewComponent;
-}(_shared_services_common_service__WEBPACK_IMPORTED_MODULE_5__["Common"]));
+}());
 
 
 
@@ -349,25 +344,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _shared_services_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../shared/services/common.service */ "./src/app/shared/services/common.service.ts");
-/* harmony import */ var _shared_services_contact_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../shared/services/contact.service */ "./src/app/shared/services/contact.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _shared_services_contact_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../shared/services/contact.service */ "./src/app/shared/services/contact.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
 
 
-
-var ContactComponent = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](ContactComponent, _super);
+var ContactComponent = /** @class */ (function () {
     function ContactComponent(formBuilder, contactService, router) {
-        var _this = _super.call(this, contactService) || this;
-        _this.formBuilder = formBuilder;
-        _this.contactService = contactService;
-        _this.router = router;
-        _this.submitted = false;
-        _this.title = 'Contacts';
-        return _this;
+        this.formBuilder = formBuilder;
+        this.contactService = contactService;
+        this.router = router;
+        this.submitted = false;
+        this.title = 'Contacts';
     }
     ContactComponent.prototype.ngOnInit = function () {
         this.contactForm = this.formBuilder.group({
@@ -391,7 +381,7 @@ var ContactComponent = /** @class */ (function (_super) {
         if (this.contactForm.invalid) {
             return;
         }
-        this.add(this.contactForm.value).subscribe(function (res) {
+        this.contactService.add(this.contactForm.value).subscribe(function (res) {
             if (res) {
                 alert('Contact Saved');
             }
@@ -407,10 +397,10 @@ var ContactComponent = /** @class */ (function (_super) {
             template: __webpack_require__(/*! ./contact.component.html */ "./src/app/contact/contact/contact.component.html"),
             styles: [__webpack_require__(/*! ./contact.component.css */ "./src/app/contact/contact/contact.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _shared_services_contact_service__WEBPACK_IMPORTED_MODULE_4__["ContactService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _shared_services_contact_service__WEBPACK_IMPORTED_MODULE_3__["ContactService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], ContactComponent);
     return ContactComponent;
-}(_shared_services_common_service__WEBPACK_IMPORTED_MODULE_3__["Common"]));
+}());
 
 
 
@@ -434,7 +424,7 @@ module.exports = "\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{ title }}\n  </h1>\n</div>\n<div class=\"\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <button class=\"btn btn-primary\" routerLink=\"/contact\">Add a Contact</button>\n        <ngx-datatable class=\"bootstrap\" [rows]=\"rows\" [columns]=\"columns\" [columnMode]=\"'force'\" [headerHeight]=\"40\"\n          [footerHeight]=\"40\" [limit]=\"10\" [rowHeight]=\"'auto'\" [reorderable]=\"reorderable\">\n          <ngx-datatable-column prop=\"name\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Name\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"email\" [width]=\"250\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Email\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"gender\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Gender\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"amount\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Amount\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"dob\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Date of Birth\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value | date: 'MM/dd/yyyy'}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"id\" [width]=\"200\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              <button class=\"btn btn-primary btn-sm\" [routerLink]=\"'/view/contact/' + value\">View</button>&nbsp;\n              <button class=\"btn btn-danger btn-sm\" (click)=\"OnDelete(value)\">Delete</button>\n            </ng-template>\n\n          </ngx-datatable-column>\n        </ngx-datatable>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{ title }}\n  </h1>\n</div>\n<div class=\"\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <button class=\"btn btn-primary\" routerLink=\"/contact\">Add a Contact</button>\n        <ngx-datatable class=\"bootstrap\" [rows]=\"rows\" [columns]=\"columns\" [columnMode]=\"'force'\" [headerHeight]=\"40\"\n          [footerHeight]=\"40\" [limit]=\"10\" [rowHeight]=\"'auto'\" >\n          <ngx-datatable-column prop=\"name\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Name\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"email\" [width]=\"250\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Email\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"gender\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Gender\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"amount\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Amount\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"dob\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Date of Birth\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value | date: 'MM/dd/yyyy'}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"id\" [width]=\"200\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              <button class=\"btn btn-primary btn-sm\" [routerLink]=\"'/view/contact/' + value\">View</button>&nbsp;\n              <button class=\"btn btn-danger btn-sm\" (click)=\"OnDelete(value)\">Delete</button>\n            </ng-template>\n\n          </ngx-datatable-column>\n        </ngx-datatable>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -451,37 +441,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _shared_services_contact_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../shared/services/contact.service */ "./src/app/shared/services/contact.service.ts");
-/* harmony import */ var _shared_services_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../shared/services/common.service */ "./src/app/shared/services/common.service.ts");
 
 
 
-
-var ContactsComponent = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](ContactsComponent, _super);
+// import { Common } from '../../shared/services/common.service';
+var ContactsComponent = /** @class */ (function () {
     function ContactsComponent(contactService) {
-        var _this = _super.call(this, contactService) || this;
-        _this.contactService = contactService;
-        _this.title = 'Contacts';
-        _this.rows = [];
-        _this.columns = [
+        this.contactService = contactService;
+        this.title = 'Contacts';
+        this.rows = [];
+        this.columns = [
             { prop: 'name', name: 'Name' },
             { name: 'Gender' },
             { name: 'Email' },
             { name: 'Amount' },
             { prop: 'dob', name: 'Date of Birth' }
         ];
-        _this.GetContacts(); // Calling Common class method diractly
-        return _this;
+        this.GetContacts(); // Calling Common class method diractly
     }
     ContactsComponent.prototype.OnDelete = function (id) {
         var _this = this;
-        this.delete(id).subscribe(function (res) {
+        this.contactService.delete(id).subscribe(function (res) {
             _this.GetContacts();
         });
     };
     ContactsComponent.prototype.GetContacts = function () {
         var _this = this;
-        this.getAll().subscribe(function (data) {
+        this.contactService.get().subscribe(function (data) {
             _this.rows = data.data;
         });
     };
@@ -496,7 +482,7 @@ var ContactsComponent = /** @class */ (function (_super) {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_services_contact_service__WEBPACK_IMPORTED_MODULE_2__["ContactService"]])
     ], ContactsComponent);
     return ContactsComponent;
-}(_shared_services_common_service__WEBPACK_IMPORTED_MODULE_3__["Common"]));
+}());
 
 
 
@@ -520,7 +506,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{ title }}\n  </h1>\n</div>\n\n<div>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3\">\n        <form [formGroup]=\"hourForm\" (ngSubmit)=\"onSubmit()\">\n          <div class=\"form-group\">\n            <label>Comments</label>\n            <input type=\"text\" formControlName=\"comments\" class=\"form-control\"\n              [ngClass]=\"{ 'is-invalid': submitted && f.name.errors }\" />\n            <div *ngIf=\"submitted && f.name.errors\" class=\"invalid-feedback\">\n              <div *ngIf=\"f.name.errors.required\">Name is required</div>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <label>Amount</label>\n            <input type=\"number\" formControlName=\"hours\" class=\"form-control\"\n              [ngClass]=\"{ 'is-invalid': submitted && f.amount.errors }\" />\n            <div *ngIf=\"submitted && f.amount.errors\" class=\"invalid-feedback\">\n              <div *ngIf=\"f.amount.errors.required\">Amount is required</div>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <button type=\"submit\" class=\"btn btn-primary\">save</button>&nbsp;<button type=\"button\"\n              routerLink=\"/hours\" class=\"btn btn-primary\">Go to List</button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{ title }}\n  </h1>\n</div>\n\n<div>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3\">\n        <form [formGroup]=\"hourForm\" (ngSubmit)=\"onSubmit()\">\n          <div class=\"form-group\">\n            <label>Comments</label>\n            <input type=\"text\" formControlName=\"comments\" class=\"form-control\"\n              [ngClass]=\"{ 'is-invalid': submitted && f.comments.errors }\" />\n            <div *ngIf=\"submitted && f.comments.errors\" class=\"invalid-feedback\">\n              <div *ngIf=\"f.comments.errors.required\">Comments is required</div>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <label>Hours</label>\n            <input type=\"number\" formControlName=\"hours\" class=\"form-control\"\n              [ngClass]=\"{ 'is-invalid': submitted && f.hours.errors }\" />\n            <div *ngIf=\"submitted && f.hours.errors\" class=\"invalid-feedback\">\n              <div *ngIf=\"f.hours.errors.required\">Hours is required</div>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <button type=\"submit\" class=\"btn btn-primary\">save</button>&nbsp;<button type=\"button\"\n              routerLink=\"/hours\" class=\"btn btn-primary\">Go to List</button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -571,7 +557,7 @@ var HourComponent = /** @class */ (function () {
         if (this.hourForm.invalid) {
             return;
         }
-        this.hourService.postHour(this.hourForm.value).subscribe(function (res) {
+        this.hourService.add(this.hourForm.value).subscribe(function (res) {
             if (res) {
                 alert('Hour Saved');
             }
@@ -614,7 +600,7 @@ module.exports = "\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{hour.name}}\n  </h1>\n</div>\n\n<div>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3\">\n\n        <button type=\"button\" routerLink=\"/hours\" class=\"btn btn-primary\">Back to Hours</button>\n\n        <div class=\"container\">\n          <hr>\n          <label class=\"h5\">Comments : </label> &nbsp;<label>{{hour.comments}}</label>\n          <hr>\n          <label class=\"h5\">Hours : </label> &nbsp;<label>{{hour.hours}}</label>\n          <hr>\n        </div>\n\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{hour.comments}}\n  </h1>\n</div>\n\n<div>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 offset-md-3\">\n\n        <button type=\"button\" routerLink=\"/hours\" class=\"btn btn-primary\">Back to Hours</button>\n\n        <div class=\"container\">\n          <hr>\n          <label class=\"h5\">Comments : </label> &nbsp;<label>{{hour.comments}}</label>\n          <hr>\n          <label class=\"h5\">Hours : </label> &nbsp;<label>{{hour.hours}}</label>\n          <hr>\n        </div>\n\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -647,7 +633,7 @@ var HourViewComponent = /** @class */ (function () {
     HourViewComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
-            _this.hourService.getHour(params.id).subscribe(function (res) {
+            _this.hourService.getById(params.id).subscribe(function (res) {
                 _this.hour = res;
             });
         });
@@ -685,7 +671,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{ title }}\n  </h1>\n</div>\n<div class=\"\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <button class=\"btn btn-primary\" routerLink=\"/hour\">Add a Hour</button>\n        <ngx-datatable class=\"bootstrap\" [rows]=\"rows\" [columns]=\"columns\" [columnMode]=\"'force'\" [headerHeight]=\"40\"\n          [footerHeight]=\"40\" [limit]=\"10\" [rowHeight]=\"'auto'\">\n          <ngx-datatable-column prop=\"name\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Comments\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"amount\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              No Of Hours\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"id\" [width]=\"200\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              <button class=\"btn btn-primary btn-sm\" [routerLink]=\"'/view/hour/' + value\">View</button>&nbsp;\n              <button class=\"btn btn-danger btn-sm\" (click)=\"OnDelete(value)\">Delete</button>\n            </ng-template>\n\n          </ngx-datatable-column>\n        </ngx-datatable>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{ title }}\n  </h1>\n</div>\n<div class=\"\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8 offset-md-2\">\n        <button class=\"btn btn-primary\" routerLink=\"/hour\">Add a Hour</button>\n        <ngx-datatable class=\"bootstrap\" [rows]=\"rows\" [columns]=\"columns\" [columnMode]=\"'force'\" [headerHeight]=\"40\"\n          [footerHeight]=\"40\" [limit]=\"10\" [rowHeight]=\"'auto'\">\n          <ngx-datatable-column prop=\"comments\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              Comments\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"hours\" [width]=\"120\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n              No Of Hours\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              {{value}}\n            </ng-template>\n          </ngx-datatable-column>\n          <ngx-datatable-column prop=\"id\" [width]=\"200\">\n            <ng-template let-column=\"column\" ngx-datatable-header-template>\n\n            </ng-template>\n            <ng-template let-value=\"value\" ngx-datatable-cell-template>\n              <button class=\"btn btn-primary btn-sm\" [routerLink]=\"'/view/hour/' + value\">View</button>&nbsp;\n              <button class=\"btn btn-danger btn-sm\" (click)=\"OnDelete(value)\">Delete</button>\n            </ng-template>\n\n          </ngx-datatable-column>\n        </ngx-datatable>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -718,14 +704,13 @@ var HoursComponent = /** @class */ (function () {
     }
     HoursComponent.prototype.OnDelete = function (id) {
         var _this = this;
-        this.hourService.deleteHour(id).subscribe(function (res) {
+        this.hourService.delete(id).subscribe(function (res) {
             _this.GetHours();
         });
     };
     HoursComponent.prototype.GetHours = function () {
         var _this = this;
-        var studentsObservable = this.hourService.getHours();
-        studentsObservable.subscribe(function (Data) {
+        this.hourService.get().subscribe(function (Data) {
             _this.rows = Data.data;
         });
     };
@@ -786,39 +771,54 @@ var Hour = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/shared/services/common.service.ts":
-/*!***************************************************!*\
-  !*** ./src/app/shared/services/common.service.ts ***!
-  \***************************************************/
-/*! exports provided: Common */
+/***/ "./src/app/shared/services/base.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/shared/services/base.service.ts ***!
+  \*************************************************/
+/*! exports provided: BaseService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Common", function() { return Common; });
-var Common = /** @class */ (function () {
-    function Common(dbService) {
-        this.dbService = dbService;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BaseService", function() { return BaseService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+
+
+
+var BaseService = /** @class */ (function () {
+    function BaseService(http, router, api) {
+        this.http = http;
+        this.router = router;
+        this.api = api;
     }
-    Common.prototype.getAll = function () {
-        return this.dbService.getAllData();
+    // Get All Contact
+    BaseService.prototype.get = function () {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiBaseUrl + this.api);
     };
-    Common.prototype.getSingle = function (data) {
-        if (data) {
-            return this.dbService.getSingleData(data);
-        }
+    BaseService.prototype.getById = function (id) {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiBaseUrl + this.api + '/' + id);
     };
-    Common.prototype.add = function (data) {
-        if (data) {
-            return this.dbService.addData(data);
-        }
+    // Insert New Contact
+    BaseService.prototype.add = function (data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiBaseUrl + this.api, data);
     };
-    Common.prototype.delete = function (data) {
-        if (data) {
-            return this.dbService.deleteData(data);
-        }
+    // Delete Single Contact
+    BaseService.prototype.delete = function (id) {
+        return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiBaseUrl + this.api + '/' + id);
     };
-    return Common;
+    // Update a Contact
+    BaseService.prototype.put = function (data) {
+        return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiBaseUrl + this.api + '/' + data.id, data);
+    };
+    BaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object, Object, Object])
+    ], BaseService);
+    return BaseService;
 }());
 
 
@@ -838,45 +838,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_base_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/base.service */ "./src/app/shared/services/base.service.ts");
 
 
 
 
 
-var ContactService = /** @class */ (function () {
+var ContactService = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](ContactService, _super);
     function ContactService(http, router) {
-        this.http = http;
-        this.router = router;
+        var _this = _super.call(this, http, router, '/contacts') || this;
+        _this.http = http;
+        _this.router = router;
+        return _this;
     }
-    // Get All Contact
-    ContactService.prototype.getAllData = function () {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/contacts');
-    };
-    ContactService.prototype.getSingleData = function (id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/contacts/' + id);
-    };
-    // Insert New Contact
-    ContactService.prototype.addData = function (contact) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/contacts', contact);
-    };
-    // Delete Single Contact
-    ContactService.prototype.deleteData = function (id) {
-        return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/contacts/' + id);
-    };
-    // Update a Contact
-    ContactService.prototype.putData = function (contact) {
-        return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/contacts/' + contact.id, contact);
-    };
     ContactService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], ContactService);
     return ContactService;
-}());
+}(_services_base_service__WEBPACK_IMPORTED_MODULE_4__["BaseService"]));
 
 
 
@@ -895,45 +879,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_base_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/base.service */ "./src/app/shared/services/base.service.ts");
 
 
 
 
 
-var HourService = /** @class */ (function () {
+var HourService = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](HourService, _super);
     function HourService(http, router) {
-        this.http = http;
-        this.router = router;
+        var _this = _super.call(this, http, router, '/hours') || this;
+        _this.http = http;
+        _this.router = router;
+        return _this;
     }
-    // Get All Hour
-    HourService.prototype.getHours = function () {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/hours');
-    };
-    HourService.prototype.getHour = function (id) {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/hours/' + id);
-    };
-    // Insert New Hour
-    HourService.prototype.postHour = function (hour) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/hours', hour);
-    };
-    // Delete Single Hour
-    HourService.prototype.deleteHour = function (id) {
-        return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/hours/' + id);
-    };
-    // Update a Hour
-    HourService.prototype.putHour = function (hour) {
-        return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/hours/' + hour.id, hour);
-    };
     HourService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], HourService);
     return HourService;
-}());
+}(_services_base_service__WEBPACK_IMPORTED_MODULE_4__["BaseService"]));
 
 
 

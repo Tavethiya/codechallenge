@@ -2,18 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HourService } from '../../shared/services/hour.service';
 import { Router } from '@angular/router';
-import { Common } from '../../shared/services/common.service';
+
 @Component({
   selector: 'app-hour',
   templateUrl: './hour.component.html',
   styleUrls: ['./hour.component.css']
 })
-export class HourComponent extends Common implements OnInit {
+export class HourComponent implements OnInit {
   hourForm: FormGroup;
   submitted = false;
   title = 'Hours';
   constructor(private formBuilder: FormBuilder, private hourService: HourService, private router: Router) {
-    super(hourService);
    }
 
   ngOnInit() {
@@ -34,7 +33,7 @@ export class HourComponent extends Common implements OnInit {
       return;
     }
 
-    this.add(this.hourForm.value).subscribe(res => {
+    this.hourService.add(this.hourForm.value).subscribe(res => {
       if (res) {
         alert('Hour Saved');
       } else {
